@@ -4,6 +4,9 @@ const port = 3000;
 const { engine } = require("express-handlebars");
 const restaurants = require("./public/jsons/restaurant.json").results;
 
+const db = require("./models");
+const Restaurant = db.Restaurant;
+
 app.engine(".hbs", engine({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
 app.set("views", "./views");
