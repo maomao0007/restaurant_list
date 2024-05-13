@@ -17,6 +17,12 @@ app.get("/", (req, res) => {
   res.redirect("/Restaurant-List");
 });
 
+app.get("/restaurants", (req, res) => {
+  return Restaurant.findAll()
+    .then((restaurants) => res.send({ restaurants }))
+    .catch((err) => res.status(422).json(err));
+});
+
 app.get("/Restaurant-List", (req, res) => {
   const keyword = req.query.search?.trim();
   const matchedRestaurants = keyword ? restaurants.filter((shop) =>
