@@ -1,17 +1,3 @@
-{{!-- <header>
-  <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30" height="30" class="d-inline-block align-top" alt="好。吃">
-          我的餐廳清單
-        </a>
-    </div>
-  </nav>
-
-  <div class="banner"></div>
-</header> --}}
-
 <h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
 <div class="container">
   <div class="row">
@@ -20,7 +6,7 @@
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
-          類別：
+          Category：
         </span>
         {{restaurant.category}}
       </p>
@@ -28,7 +14,7 @@
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-map-marker-alt pr-2"></i>
-          地址：
+          Location：
         </span>
         {{restaurant.location}}
         <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
@@ -39,7 +25,7 @@
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-mobile-alt pr-2"></i>
-          電話：
+          Phone：
         </span>
          {{restaurant.phone}}
       </p>
@@ -49,6 +35,16 @@
       </p>
 
       <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}" style="max-width: 600px;">
+      <div class="container">
+      <div class="row">
+      <div class="col">
+      <a href="/">Back to My Restaurant List</a>
+      </div>
+      <div class="col text-right">
+      <a class="p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3" href="/Restaurant-List/{{restaurant.id}}/edit">Edit</a>
+      </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>

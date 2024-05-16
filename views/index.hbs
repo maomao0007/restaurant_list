@@ -3,13 +3,13 @@
   <div class="search-bar-outer">
     <div class="search-bar-inner">
       <form action="/Restaurant-List">
-        <h4 class="mb-2">尋找餐廳：</h4>
+        <h4 class="mb-2">Look for the restaurants：</h4>
         <div class="input-group">
           <input
             type="text"
             name="search"
             class="form-control"
-            placeholder="輸入餐廳、分類"
+            placeholder="Enter name / category of the restaurant"
             aria-label="Restaurant Name..."
             value="{{keyword}}"
             aria-describedby="search-button"
@@ -26,33 +26,45 @@
 </div>
 
 <!-- restaurant list -->
+<div style="text-align: center; margin-top: 20px;">
+  <a href="/Restaurant-List/new" class="btn btn-primary" style="font-size: 16px; padding: 8px 16px; text-decoration: none;">Add a New Restaurant</a>
+</div>
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="row row-cols-sm-3">
         {{#each restaurants as |restaurant|}}
-          <a href="/Restaurant-List/{{restaurant.id}}" class="text-secondary">
-            <div class="card mb-3">
-              <img
-                class="card-img-top"
-                src="{{restaurant.image}}"
-                alt="{{restaurant.name}}"
-              />
-              <div class="card-body p-3">
-                <h6 class="card-title mb-1">{{restaurant.name}}</h6>
+          <div class="col mb-4">
+            <a href="/Restaurant-List/{{restaurant.id}}" class="text-secondary">
+              <div class="card mb-3">
+                <img
+                  class="card-img-top"
+                  src="{{restaurant.image}}"
+                  alt="{{restaurant.name}}"
+                />
+                <div class="card-body p-3">
+                  <h6 class="card-title mb-1">{{restaurant.name}}</h6>
 
-                <div class="restaurant-category mb-1">
-                  <i class="fas fa-utensils pr-2"></i>
-                  {{restaurant.category}}
+                  <div class="restaurant-category mb-1">
+                    <i class="fas fa-utensils pr-2"></i>
+                    {{restaurant.category}}
+                  </div>
+
+                  <span class="badge rounded-pill bg-danger font-weight-normal">
+                    {{restaurant.rating}}
+                    <i class="fas fa-star fa-xs"></i>
+                  </span>
                 </div>
-
-                <span class="badge rounded-pill bg-danger font-weight-normal">
-                  {{restaurant.rating}}
-                  <i class="fas fa-star fa-xs"></i>
-                </span>
               </div>
+            </a>
+            <div class="text-right">
+              <a href="/Restaurant-List/{{restaurant.id}}/edit" class="text-primary">Edit</a>
+              <a href="/Restaurant-List/{{restaurant.id}}" class="text-primary">Detail</a>
+              <form action="/Restaurant-List/{{restaurant.id}}?_method=DELETE" method="POST" style="display: inline;">
+              <button type="submit">delete</button>
+              </form>
             </div>
-          </a>
+          </div>
         {{/each}}
       </div>
     </div>
