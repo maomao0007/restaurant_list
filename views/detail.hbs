@@ -17,7 +17,11 @@
           Location：
         </span>
         {{restaurant.location}}
-        <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
+        <a
+          href="{{restaurant.google_map}}"
+          class="text-secondary"
+          target="_blank"
+        >
           <i class="fas fa-location-arrow pr-2 fa-xs"></i>
         </a>
       </p>
@@ -27,24 +31,50 @@
           <i class="fas fa-mobile-alt pr-2"></i>
           Phone：
         </span>
-         {{restaurant.phone}}
+        {{restaurant.phone}}
       </p>
 
       <p class="mb-5">
         {{restaurant.description}}
       </p>
 
-      <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurant.image}}" alt="{{restaurant.name}}" style="max-width: 600px;">
-      <div class="container">
-      <div class="row">
-      <div class="col">
-      <a href="/">Back to My Restaurant List</a>
-      </div>
-      <div class="col text-right">
-      <a class="p-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3" href="/Restaurant-List/{{restaurant.id}}/edit">Edit</a>
-      </div>
-      </div>
+      <img
+        class="rounded mx-auto d-block mb-4 w-100"
+        src="{{restaurant.image}}"
+        alt="{{restaurant.name}}"
+        style="max-width: 600px;"
+      />
+      <div class="container py-4">
+        <div class="row">
+          <div class="col">
+            <a href="/" class="text-decoration-none text-muted">Back to My
+              Restaurant List</a>
+          </div>
+          <div class="col text-end">
+            <a
+              href="/Restaurant-List/{{restaurant.id}}/edit"
+              class="btn btn-outline-primary me-2"
+            >Edit</a>
+            <form
+              action="/Restaurant-List/{{restaurant.id}}?_method=DELETE"
+              method="POST"
+              style="display: inline;"
+            >
+              <button
+                type="submit"
+                class="btn btn-outline-danger"
+                onclick="return confirmDelete();"
+              >Delete</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+{{!-- 避免誤觸 delete 設定，當使用者按 delete 時，會跳出視窗 --}}
+<script>
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete this restaurant?");
+  }
+</script>

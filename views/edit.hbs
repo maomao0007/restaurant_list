@@ -2,13 +2,24 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 mx-auto">
-      <form action="/Restaurant-list/{{restaurant.id}}?_method=PUT" method="POST">
+      <form
+        action="/Restaurant-list/{{restaurant.id}}?_method=PUT"
+        method="POST"
+      >
         <div class="form-group mb-1">
           <span class="text-secondary">
             <i class="fas fa-store-alt"></i>
             <label for="name">Name of the Restaurant</label>
           </span>
-          <input id="name" type="text" class="form-control" placeholder="Please enter the name of the restaurant" name="name" value="{{restaurant.name}}" style="width: 400px;" />
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            placeholder="Please enter the name of the restaurant"
+            name="name"
+            value="{{restaurant.name}}"
+            style="width: 400px;"
+          />
         </div>
 
         <div class="form-group mb-1">
@@ -16,7 +27,15 @@
             <i class="fas fa-store-alt"></i>
             <label for="name_en">Name of the Restaurant (English)</label>
           </span>
-          <input id="name_en" type="text" class="form-control" placeholder="Please enter the name of the restaurant in English" name="name_en" value="{{restaurant.name_en}}" style="width: 400px;" />
+          <input
+            id="name_en"
+            type="text"
+            class="form-control"
+            placeholder="Please enter the name of the restaurant in English"
+            name="name_en"
+            value="{{restaurant.name_en}}"
+            style="width: 400px;"
+          />
         </div>
 
         <div class="form-group mb-1">
@@ -24,7 +43,13 @@
             <i class="fas fa-utensils pr-2"></i>
             <label for="title">Category</label>
           </span>
-          <input list="titles" class="form-control" name="category" id="title" value="{{restaurant.category}}" />
+          <input
+            list="titles"
+            class="form-control"
+            name="category"
+            id="title"
+            value="{{restaurant.category}}"
+          />
           <datalist id="titles">
             <option>美式</option>
             <option>中式料理</option>
@@ -41,7 +66,15 @@
             <i class="fas fa-map-marker-alt pr-2"></i>
             <label for="location">Location</label>
           </span>
-          <input id="location" type="text" class="form-control" placeholder="Please enter the location of the restaurant" name="location" value="{{restaurant.location}}" style="width: 400px;"/>
+          <input
+            id="location"
+            type="text"
+            class="form-control"
+            placeholder="Please enter the location of the restaurant"
+            name="location"
+            value="{{restaurant.location}}"
+            style="width: 400px;"
+          />
         </div>
 
         <div class="form-group mb-1">
@@ -49,8 +82,20 @@
             <i class="fas fa-map-marker-alt pr-2"></i>
             <label for="googleMap">Google Map</label>
           </span>
-          <input id="googleMap" type="text" class="form-control" placeholder="Please enter the url of the restaurant in the google map" name="google_map" value="{{restaurant.google_map}}" style="width: 400px;"/>
-          <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
+          <input
+            id="googleMap"
+            type="text"
+            class="form-control"
+            placeholder="Please enter the url of the restaurant in the google map"
+            name="google_map"
+            value="{{restaurant.google_map}}"
+            style="width: 400px;"
+          />
+          <a
+            href="{{restaurant.google_map}}"
+            class="text-secondary"
+            target="_blank"
+          >
             <i class="fas fa-location-arrow pr-2 fa-xs"></i>
           </a>
         </div>
@@ -60,7 +105,15 @@
             <i class="fas fa-mobile-alt pr-2"></i>
             <label for="phone">Phone</label>
           </span>
-          <input id="phone" type="text" class="form-control" placeholder="Please enter the phone number of the restaurant" name="phone" value="{{restaurant.phone}}" style="width: 400px;" />
+          <input
+            id="phone"
+            type="text"
+            class="form-control"
+            placeholder="Please enter the phone number of the restaurant"
+            name="phone"
+            value="{{restaurant.phone}}"
+            style="width: 400px;"
+          />
         </div>
 
         <div class="form-group mb-1">
@@ -68,31 +121,57 @@
             <i class="fa fa-star pr-2"></i>
             <label for="rating">Rating</label>
           </span>
-          <input id="rating" type="number" class="form-control" placeholder="Please select / enter the rating of the restaurant" name="rating" value="{{restaurant.rating}}" min="1" max="5" step="0.1" style="width: 400px;" />
+          <input
+            id="rating"
+            type="number"
+            class="form-control"
+            placeholder="Please select / enter the rating of the restaurant"
+            name="rating"
+            value="{{restaurant.rating}}"
+            min="1"
+            max="5"
+            step="0.1"
+            style="width: 400px;"
+          />
         </div>
-
         <div class="form-group mb-1">
           <span class="text-secondary">
             <i class="fas fa-pencil-alt"></i>
             <label for="description">Description</label>
           </span>
-           <textarea id="description" rows="5" cols="60" class="form-control" placeholder="Please enter the description of the restaurant" name="description">"{{restaurant.description}}"</textarea>
+          <textarea
+            id="description"
+            rows="5"
+            cols="60"
+            class="form-control"
+            placeholder="Please enter the description of the restaurant"
+            name="description"
+          >"{{restaurant.description}}"</textarea>
         </div>
-
         <div class="form-group mb-1">
           <span class="text-secondary">
             <i class="fas fa-image"></i>
             <label for="image">Image</label>
           </span>
-          <input id="image" type="url" class="form-control" placeholder="Please enter the restaurant's image URL" name="image" value="{{restaurant.image}}" style="width: 400px;"/>
+          <input
+            id="image"
+            type="url"
+            class="form-control"
+            placeholder="Please enter the restaurant's image URL"
+            name="image"
+            value="{{restaurant.image}}"
+            style="width: 400px;"
+          />
         </div>
-
         <button type="submit" class="btn btn-primary">Save</button>
       </form>
-
       <div style="text-align: center;">
-  <a href="/" class="btn btn-outline-info btn-sm" style="margin-bottom: 20px;">Back to My Restaurant List</a>
-</div>
+        <a
+          href="/"
+          class="btn btn-outline-info btn-sm"
+          style="margin-bottom: 20px;"
+        >Back to My Restaurant List</a>
+      </div>
     </div>
   </div>
 </div>

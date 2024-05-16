@@ -27,7 +27,11 @@
 
 <!-- restaurant list -->
 <div style="text-align: center; margin-top: 20px;">
-  <a href="/Restaurant-List/new" class="btn btn-primary" style="font-size: 16px; padding: 8px 16px; text-decoration: none;">Add a New Restaurant</a>
+  <a
+    href="/Restaurant-List/new"
+    class="btn btn-primary"
+    style="font-size: 16px; padding: 8px 16px; text-decoration: none;"
+  >Add a New Restaurant</a>
 </div>
 <div class="container mt-5">
   <div class="row">
@@ -49,7 +53,6 @@
                     <i class="fas fa-utensils pr-2"></i>
                     {{restaurant.category}}
                   </div>
-
                   <span class="badge rounded-pill bg-danger font-weight-normal">
                     {{restaurant.rating}}
                     <i class="fas fa-star fa-xs"></i>
@@ -58,10 +61,24 @@
               </div>
             </a>
             <div class="text-right">
-              <a href="/Restaurant-List/{{restaurant.id}}/edit" class="text-primary">Edit</a>
-              <a href="/Restaurant-List/{{restaurant.id}}" class="text-primary">Detail</a>
-              <form action="/Restaurant-List/{{restaurant.id}}?_method=DELETE" method="POST" style="display: inline;">
-              <button type="submit">delete</button>
+              <a
+                href="/Restaurant-List/{{restaurant.id}}/edit"
+                class="btn btn-outline-primary btn-sm me-2"
+              >Edit</a>
+              <a
+                href="/Restaurant-List/{{restaurant.id}}"
+                class="btn btn-outline-primary btn-sm me-2"
+              >Detail</a>
+              <form
+                action="/Restaurant-List/{{restaurant.id}}?_method=DELETE"
+                method="POST"
+                style="display: inline;"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-outline-danger btn-sm"
+                  onclick="return confirmDelete();"
+                >Delete</button>
               </form>
             </div>
           </div>
@@ -70,3 +87,9 @@
     </div>
   </div>
 </div>
+{{! 避免誤 delete 設定，當使用者按 delete 時，會跳出視窗 }}
+<script>
+  function confirmDelete() {
+    return confirm("Are you sure you want to delete this restaurant?");
+  }
+</script>
