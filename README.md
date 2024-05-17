@@ -9,7 +9,7 @@ This website showcases a variety of restaurants, where you can view the entire l
 - View detailed information for each restaurant
 - Create a new restaurant by adding its information
 - Update restaurant information
-- Deleteing a restaurant
+- Delete a restaurant
 - Access restaurant locations via Google Maps integration
 - Search restaurants by name, category, or description to filter results
 - Clicking the delete button will prompt an alert to reconfirm, preventing unwanted data loss
