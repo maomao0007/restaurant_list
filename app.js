@@ -5,6 +5,7 @@ const { engine } = require("express-handlebars");
 //const restaurants = require("./public/jsons/restaurant.json").results;
 const methodOverride = require("method-override");
 
+//導入資料庫模型
 const db = require("./models");
 const Restaurant = db.Restaurant;
 
@@ -17,18 +18,15 @@ app.engine(".hbs", engine({ extname: ".hbs" }));
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
+// 解析在 public 檔案裡的靜態文件目錄
 app.use(express.static("public"));
 
+// redirect to the home page of the restaurant list
 app.get("/", (req, res) => {
   res.redirect("/Restaurant-List");
 });
 
-//app.get("/restaurant", (req, res) => {
-  //return Restaurant.findAll()
-    //.then((restaurant) => res.render("index", { restaurant }))
-    //.catch((err) => res.status(422).json(err));
-//});
-
+// display the restaurant list and keyword function
 app.get("/Restaurant-List", (req, res) => {
   const keyword = req.query.search?.trim();
  // 使用 findAll 方法從資料庫中查詢所有餐廳
@@ -71,10 +69,12 @@ app.get("/Restaurant-List", (req, res) => {
     });
 });
 
+// display the add restaurant page
 app.get("/Restaurant-List/new", (req, res) => {
   res.render("new")
 })
 
+// add a new restaurant
 app.post("/Restaurant-List", (req, res) => {
   const {
     name,
@@ -103,12 +103,7 @@ app.post("/Restaurant-List", (req, res) => {
     .catch((error) => console.log(error));
 });
 
-//app.get("/Restaurant-List/:id", (req, res) => {
-//const id = req.params.id;
-//const restaurant = restaurants.find((shop)=> shop.id.toString()===id)
-//res.render('detail',{ restaurant: restaurant });
-//});
-
+// display the details of the restaurant
 app.get("/Restaurant-List/:id", (req, res) => {
   const id = req.params.id;
 
@@ -129,6 +124,7 @@ app.get("/Restaurant-List/:id", (req, res) => {
   }).then((restaurant) => res.render("detail", { restaurant }));
 });
 
+// display the edit restaurant page
 app.get("/Restaurant-List/:id/edit", (req, res) => {
   const id = req.params.id
   return Restaurant.findByPk(id, {
@@ -149,78 +145,20 @@ app.get("/Restaurant-List/:id/edit", (req, res) => {
     .then((restaurant) => res.render("edit", { restaurant }))
     .catch((err) => console.log(err));
 })
+
+// edit the restaurant
 app.put("/Restaurant-List/:id", (req, res) => {
-  const {
-    name,
-    name_en,
-    category,
-    image,
-    location,
-    phone,
-    google_map,
-    rating,
-    description,
-  } = req.body;
+  const body = req.body;
   const id = req.params.id;
-
-  return Restaurant.findByPk(id)
-    .then((restaurant) => {
-      if (!restaurant) {
-        return res.status(404).send("Restaurant not found");
-      }
-
-      // 使用解構賦值來更新餐廳屬性
-      restaurant.name = name;
-      restaurant.name_en = name_en;
-      restaurant.category = category;
-      restaurant.image = image;
-      restaurant.location = location;
-      restaurant.phone = phone;
-      restaurant.google_map = google_map;
-      restaurant.rating = rating;
-      restaurant.description = description;
-
-      // 儲存更新後的餐廳
-      return restaurant.save()
-        .then(() => {
-          res.redirect(`/Restaurant-List/${id}`);
-        })
-        .catch((err) => {
-          console.error("Error saving updated restaurant:", err);
-          res.status(500).send("Error saving updated restaurant");
-        });
-    })
-
+  return Restaurant.update( body, { where: { id } })
+    .then(() => res.redirect(`/Restaurant-List/${id}`))
     .catch((err) => {
-      console.error("Error finding restaurant:", err);
-      res.status(500).send("Error finding restaurant");
+      console.error("Error updating restaurant:", err);
+      res.status(500).send("Error updating restaurant");
     });
 });
 
-
-  //另一種方法 
-  //return Restaurant.findByPk(id, {
-    //attributes: [
-      //"id",
-      //"name",
-      //"name_en",
-      //"category",
-      //"image",
-      //"location",
-      //"phone",
-      //"google_map",
-      //"rating",
-      //"description",
-    //],
-  //})
-    //.then((restaurant) => {
-        //restaurant.name = body.name;
-        //return restaurant.save()
-      //.catch((err) => console.log(err));
-      //})
-      //.then(() => res.redirect(`/Restaurant-List/${id}`));
-//})
-
+// delete the restaurant
 app.delete("/Restaurant-List/:id", (req, res) => {
   const id = req.params.id
   return Restaurant.destroy({ where: { id } })

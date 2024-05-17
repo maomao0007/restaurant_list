@@ -13,11 +13,55 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Restaurant.init({
-    name: DataTypes.STRING
-  }, {
+ 
+Restaurant.init(
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    name_en: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    google_map: {
+      type: DataTypes.STRING(500),
+      allowNull: true,
+    },
+    rating: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 5,
+      },
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+  },
+  {
     sequelize,
-    modelName: 'Restaurant',
-  });
+    modelName: "Restaurant",
+  }
+);
+
   return Restaurant;
 };

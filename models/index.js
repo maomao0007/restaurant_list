@@ -41,3 +41,8 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+// Sync the database and models
+// sequelize.sync({ alter: true }).then(() => {
+//   console.log("Database & tables created!");
+// });
