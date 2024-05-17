@@ -43,6 +43,7 @@ This website showcases a variety of restaurants, where you can view the entire l
 - Node.js 18.15.0
 - Nodemon 3.1.0
 - npm 9.5.0
+- method-override 3.0.0
 - Sequelize 6.37.3
 - Sequelize-CLI 6.6.2
 - MySQL 3.9.7
