@@ -20,7 +20,7 @@ This website showcases a variety of restaurants, where you can view the entire l
    $ git clone https://github.com/maomao0007/restaurant_list.git
 2. Navigate to the project directory:
    ```shell
-   $ cd Random-Password-Generator
+   $ cd restaurant-list
 3. Install the necessary dependencies:
    ```shell
    $ npm install
