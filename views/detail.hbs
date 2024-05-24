@@ -1,4 +1,11 @@
-<h1 class="mb-1 restaurant-show-title">{{restaurant.name}}</h1>
+<h1 class="restaurant-show-title">{{restaurant.name}}</h1>
+
+{{#if message}}
+<div class="alert alert-success text-center" role="alert">  
+    {{message}}
+</div>
+{{/if}}
+
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
@@ -72,9 +79,8 @@
     </div>
   </div>
 </div>
-{{!-- 避免誤按 delete 設定，當使用者按 delete 時，會跳出確認視窗 --}}
+{{! 避免誤按 delete 設定，當使用者按 delete 時，會跳出確認視窗 }}
 <script>
-  function confirmDelete() {
-    return confirm("Are you sure you want to delete this restaurant?");
-  }
+  function confirmDelete() { return confirm("Are you sure you want to delete
+  this restaurant?"); }
 </script>
