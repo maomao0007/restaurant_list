@@ -1,4 +1,10 @@
 <h1 class="mb-1 restaurant-show-title">Add Restaurant Content</h1>
+{{#if error}}
+<div class="alert alert-danger text-center" role="alert" >
+  {{error}}
+</div>
+{{/if}}
+
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-6 mx-auto">

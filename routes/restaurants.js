@@ -40,7 +40,8 @@ router.get("/", (req, res) => {
       res.render("index", {
         restaurants: matchedRestaurants,
         keyword: keyword,
-        message: req.flash("success")
+        message: req.flash("success"),
+        error: req.flash("error"),
       });
     })
     .catch((err) => {
@@ -51,7 +52,7 @@ router.get("/", (req, res) => {
 
 // display the add restaurant page
 router.get("/new", (req, res) => {
-  res.render("new");
+  res.render("new", {error: req.flash("error")})
 });
 
 // add a new restaurant
@@ -83,7 +84,11 @@ router.post("/", (req, res) => {
       req.flash("success", "Added successfully");
       res.redirect("/Restaurant-List");
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.error(error);
+      req.flash("error", "Failed to add")
+      return res.redirect("back")
+    })
 });
 
 // display the details of the restaurant
@@ -125,7 +130,7 @@ router.get("/:id/edit", (req, res) => {
     ],
     raw: true,
   })
-    .then((restaurant) => res.render("edit", { restaurant }))
+    .then((restaurant) => res.render("edit", { restaurant, error: req.flash("error") }))
     .catch((err) => console.log(err));
 });
 
@@ -138,9 +143,10 @@ router.put("/:id", (req, res) => {
       req.flash("success", "Edited successfully");
       res.redirect(`/Restaurant-List/${id}`)
     })
-    .catch((err) => {
-      console.error("Error updating restaurant:", err);
-      res.status(500).send("Error updating restaurant");
+    .catch((error) => {
+      console.error(error);
+      req.flash("error", "Failed to edit");
+      return res.redirect("back");
     });
 });
 
@@ -151,7 +157,12 @@ router.delete("/:id", (req, res) => {
   .then(() => {
     req.flash("success", "Deleted successfully")
     res.redirect("/Restaurant-List")
-  });
+  })
+  .catch((error) => {
+      console.error(error);
+      req.flash("error", "Failed to delete");
+      return res.redirect("back");
+    });
 });
 
 module.exports = router;
