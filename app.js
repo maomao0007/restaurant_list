@@ -9,6 +9,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 // 引用路由器
 const router = require("./routes");
+const messageHandler = require("./middlewares/message-handler");
+const errorHandler = require("./middlewares/error-handler");
 
 app.use(
   session({
@@ -32,7 +34,11 @@ app.use(express.static("public"));
 
 app.use(flash());
 
+app.use(messageHandler)
+
 app.use(router) // 將 request 導入路由器
+
+app.use(errorHandler)
 
 app.listen(port, () => {
   console.log(`express server is running on http://localhost:${port}`);

@@ -6,7 +6,7 @@ const db = require("../models");
 const Restaurant = db.Restaurant;
 
 // display the restaurant list and keyword function
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   const keyword = req.query.search?.trim();
   // 使用 findAll 方法從資料庫中查詢所有餐廳
   return Restaurant.findAll({
@@ -41,22 +41,21 @@ router.get("/", (req, res) => {
         restaurants: matchedRestaurants,
         keyword: keyword,
         message: req.flash("success"),
-        error: req.flash("error"),
       });
     })
     .catch((err) => {
-      console.error("Error fetching restaurants:", err);
-      res.status(500).send("Error fetching restaurants");
+      console.errorMessage = "Failed to load"
+      next(error)
     });
 });
 
 // display the add restaurant page
 router.get("/new", (req, res) => {
-  res.render("new", {error: req.flash("error")})
+  res.render("new")
 });
 
 // add a new restaurant
-router.post("/", (req, res) => {
+router.post("/", (req, res, next) => {
   const {
     name,
     name_en,
@@ -85,9 +84,8 @@ router.post("/", (req, res) => {
       res.redirect("/Restaurant-List");
     })
     .catch((error) => {
-      console.error(error);
-      req.flash("error", "Failed to add")
-      return res.redirect("back")
+      error.errorMessage = "Failed to add"
+      next(error)
     })
 });
 
@@ -109,7 +107,11 @@ router.get("/:id", (req, res) => {
       "description",
     ],
     raw: true,
-  }).then((restaurant) => res.render("detail", { restaurant, message: req.flash("success") }));
+  }).then((restaurant) => res.render("detail", { restaurant }))
+    .catch((error) => {
+			error.errorMessage = 'Failed to load'
+			next(error)
+		})
 });
 
 // display the edit restaurant page
@@ -130,8 +132,11 @@ router.get("/:id/edit", (req, res) => {
     ],
     raw: true,
   })
-    .then((restaurant) => res.render("edit", { restaurant, error: req.flash("error") }))
-    .catch((err) => console.log(err));
+    .then((restaurant) => res.render("edit", { restaurant }))
+    .catch((error) => {
+      error.errorMessage = "Failed to load";
+      next(error);
+    });
 });
 
 // edit the restaurant
@@ -141,12 +146,11 @@ router.put("/:id", (req, res) => {
   return Restaurant.update(body, { where: { id } })
     .then(() => {
       req.flash("success", "Edited successfully");
-      res.redirect(`/Restaurant-List/${id}`)
+      res.redirect(`/Restaurant-List/${id}`);
     })
     .catch((error) => {
-      console.error(error);
-      req.flash("error", "Failed to edit");
-      return res.redirect("back");
+      error.errorMessage = "Failed to edit";
+      next(error);
     });
 });
 
@@ -154,14 +158,13 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
   return Restaurant.destroy({ where: { id } })
-  .then(() => {
-    req.flash("success", "Deleted successfully")
-    res.redirect("/Restaurant-List")
-  })
-  .catch((error) => {
-      console.error(error);
-      req.flash("error", "Failed to delete");
-      return res.redirect("back");
+    .then(() => {
+      req.flash("success", "Deleted successfully");
+      res.redirect("/Restaurant-List");
+    })
+    .catch((error) => {
+      error.errorMessage = "Failed to edit";
+      next(error);
     });
 });
 

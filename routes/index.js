@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 // 導入路由模組
 const restaurants = require("./restaurants");
-
+// 使用路由模組
 router.use("/Restaurant-List", restaurants);
 
 router.get("/", (req, res) => {
