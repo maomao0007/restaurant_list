@@ -8,6 +8,8 @@ const Restaurant = db.Restaurant;
 // display the restaurant list and keyword function
 router.get("/", (req, res, next) => {
   const keyword = req.query.search?.trim();
+  const page = parseInt(req.query.page) || 1
+  const limit = 9 // 9 items per page
   // 使用 findAll 方法從資料庫中查詢所有餐廳
   return Restaurant.findAll({
     attributes: [
@@ -22,6 +24,8 @@ router.get("/", (req, res, next) => {
       "rating",
       "description",
     ],
+    offset: (page - 1) * limit, // the number of skipped items
+    limit,
     raw: true,
   })
     .then((restaurants) => {
@@ -40,7 +44,9 @@ router.get("/", (req, res, next) => {
       res.render("index", {
         restaurants: matchedRestaurants,
         keyword: keyword,
-        message: req.flash("success"),
+        prev: page > 1 ? page - 1 : page, // if the current page > 1 , minus 1 ; otherwise, show the current page
+        next: page + 1,
+        page, // the current page
       });
     })
     .catch((err) => {

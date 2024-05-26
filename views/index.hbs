@@ -2,6 +2,8 @@
 
 <!-- search bar -->
 <div class="container search-bar">
+ <div class="row">
+  <div class="col-md-8 col-6 mx-auto">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
       <form action="/Restaurant-List">
@@ -21,11 +23,28 @@
                 class="fas fa-search"
               ></i></button>
           </div>
-        </div>
-      </form>
-    </div>
+
+          <div class="col-md-3 col-1">
+     <select class="form-select" id="sort" name="sort">
+              <option>A > Z</option>
+              <option>Z > A</option>
+              <option>類別</option>
+              <option>地區</option>
+            </select>
   </div>
 </div>
+</div>
+        </div>
+        
+      </form>
+      
+    </div>
+    
+  </div>
+  </div>
+  </div>
+</div>
+
 
 <!-- restaurant list -->
 <div style="text-align: center; margin-top: 20px;">
@@ -89,6 +108,24 @@
     </div>
   </div>
 </div>
+
+<!-- Pagination controls -->
+<div class="d-flex justify-content-center align-items-center my-4">
+  <form action="/Restaurant-List" method="GET" style="display: inline;" class="me-2">
+    <input type="hidden" name="page" value="{{prev}}">
+    <button type="submit" class="btn btn-primary">
+      <i class="fas fa-chevron-left"></i> Prev
+    </button>
+  </form>
+  <span class="mx-3">Page: {{page}}</span>
+  <form action="/Restaurant-List" method="GET" style="display: inline;" class="ms-2">
+    <input type="hidden" name="page" value="{{next}}">
+    <button type="submit" class="btn btn-primary">
+      Next <i class="fas fa-chevron-right"></i>
+    </button>
+  </form>
+</div>
+
 {{! 避免誤按 delete 設定，當使用者按 delete 時，會跳出確認視窗 }}
 <script>
   function confirmDelete() {
