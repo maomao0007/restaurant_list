@@ -38,18 +38,18 @@ This website showcases a variety of restaurants, where you can view the entire l
    
 ## Development Tools
 - Bootstrap 5.1.3
+- connect-flash 0.1.1
+- Dotenv 16.4.5
 - Express 4.19.2
 - Express-handlebars 7.1.2
+- Express-session 1.18.0
+- method-override 3.0.0
+- MySQL 3.9.7
 - Node.js 18.15.0
 - Nodemon 3.1.0
 - npm 9.5.0
-- method-override 3.0.0
 - Sequelize 6.37.3
 - Sequelize-CLI 6.6.2
-- MySQL 3.9.7
-- connect-flash 0.1.1
-- express-session 1.18.0
-- Dotenv 16.4.5
 
 ## Screenshots
 ![screencapture-Restaurant-List  ( homepage )](https://github.com/maomao0007/restaurant_list/assets/164178703/15fa9d5c-5ce1-403f-b6f5-a56d9a5eb07b)
