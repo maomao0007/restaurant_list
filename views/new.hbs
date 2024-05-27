@@ -63,7 +63,7 @@
             <i class="fas fa-mobile-alt pr-2"></i>
             <label for="phone">Phone *</label>
           </span>
-          <input id="phone" type="text" class="form-control" placeholder="Please enter the phone number of the restaurant" name="phone" style="width: 400px;" required/>
+          <input id="phone" type="text" class="form-control" pattern="[0-9\s]{11,12}" placeholder="Please enter the number of the restaurant (01 2345 6789)" name="phone" style="width: 400px;" required/>
         </div>
 
         <div class="form-group mb-1">
@@ -90,7 +90,7 @@
           <input id="image" type="url" class="form-control" placeholder="Please enter the restaurant's image URL" name="image" style="width: 400px;"/>
         </div>
 
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary add">Add</button>
       </form>
 
       <div style="text-align: center; ">
@@ -99,3 +99,33 @@
     </div>
   </div>
 </div>
+
+<script>
+
+const addBtn = document.querySelector('.add')
+const locationInput = document.querySelector('#location');
+const googleMapInput = document.querySelector('#googleMap');
+
+// 監聽器綁在 add btn， 當 user click add btn ，系統會檢查格式內容是否符合以下規定
+addBtn.addEventListener('click', function() {
+  // 檢查 locationInput 的值是否包含 "市" 和 "區"
+  if (!locationInput.value.includes('市') || !locationInput.value.includes('區')) {
+    alert('Please enter the correct address format');
+    event.preventDefault(); // 阻止表單提交
+    return;  // 阻止後續檢查
+  }
+});
+
+addBtn.addEventListener('click', function() {
+  // 定義網址的格式
+  const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+
+  // 檢查 googleMapInput 的值是否為網址的格式
+  if (!urlPattern.test(googleMapInput.value)) {
+    alert('Please enter the correct google-map format');
+    event.preventDefault(); // 阻止表單提交
+    return;  // 阻止後續操作
+  }
+});
+
+</script>

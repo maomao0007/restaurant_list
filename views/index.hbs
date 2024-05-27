@@ -23,28 +23,26 @@
                 class="fas fa-search"
               ></i></button>
           </div>
-
+<!-- dropdown box -->
           <div class="col-md-3 col-1">
-     <select class="form-select" id="sort" name="sort">
-              <option>A > Z</option>
-              <option>Z > A</option>
-              <option>類別</option>
-              <option>地區</option>
-            </select>
-  </div>
-</div>
-</div>
+            <form action="/Restaurant-List" method="GET" style="display: inline;">
+             <select class="form-select" name="sort" aria-label="Default select example" onchange="this.form.submit()">
+              <option value="name_asc" {{#if sort1}} selected {{/if}}>A -> Z</option>
+              <option value="name_desc" {{#if sort2}} selected {{/if}}>Z -> A</option>
+              <option value="category" {{#if sort3}} selected {{/if}}>Category</option>
+              <option value="location" {{#if sort4}} selected {{/if}}>Location</option>
+             </select>
+            </form>
+           </div>
+          </div>
+         </div>
         </div>
-        
       </form>
-      
+     </div>
     </div>
-    
-  </div>
-  </div>
+   </div>
   </div>
 </div>
-
 
 <!-- restaurant list -->
 <div style="text-align: center; margin-top: 20px;">
@@ -117,7 +115,7 @@
       <i class="fas fa-chevron-left"></i> Prev
     </button>
   </form>
-  <span class="mx-3">Page: {{page}}</span>
+  <span class="mx-3">Page {{page}}</span>
   <form action="/Restaurant-List" method="GET" style="display: inline;" class="ms-2">
     <input type="hidden" name="page" value="{{next}}">
     <button type="submit" class="btn btn-primary">

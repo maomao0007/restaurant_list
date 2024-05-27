@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const { engine } = require("express-handlebars");
-//const restaurants = require("./public/jsons/restaurant.json").results;
 const methodOverride = require("method-override");
 
 const flash = require("connect-flash");
@@ -12,13 +11,19 @@ const router = require("./routes");
 const messageHandler = require("./middlewares/message-handler");
 const errorHandler = require("./middlewares/error-handler");
 
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
+
 app.use(
   session({
-    secret: "ThisIsSecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
 );
+
+console.log("SESSION_SECRET:", process.env.SESSION_SECRET);
 
 //用於解析 POST 請求中的 URL 編碼的表單資料
 app.use(express.urlencoded({ extended: true }));
