@@ -1,18 +1,19 @@
 # Restaurant List
 
 ## Introduction
-This website showcases a variety of restaurants, where you can view the entire list and details of each establishment. Additionally, users can add, update, and delete restaurants to provide more detailed information. Furthermore, the platform offers a search functionality, enabling users to find restaurants based on keywords.
+Welcome to my restaurant directory! This website showcases a variety of restaurants, where you can view the entire list and details of each establishment. Additionally, users can add, update, and delete restaurants to provide more detailed information. Furthermore, the platform offers a search and dropdown box filter functionality, enabling users to find restaurants based on keywords. Moreover, the website includes pagination to navigate through the data more conveniently.
 
 ## Features
 
-- Display an assorted list of restaurants
-- View detailed information for each restaurant
-- Create a new restaurant by adding its information
-- Update restaurant information
-- Delete a restaurant
-- Access restaurant locations via Google Maps integration
-- Search restaurants by name, category, or description to filter results
-- Clicking the delete button will prompt an alert to reconfirm, preventing unwanted data loss
+- Restaurant List: Browse through a comprehensive list of restaurants.
+- Restaurant Details: View detailed information about each restaurant.
+- Add, Update, Delete: Users can add new restaurants, update existing ones, and delete items.
+- Access restaurant locations via Google Maps integration.
+- Search Functionality: Utilize the search feature by name, category, or description to find restaurants based on keywords.
+- Dropdown Box Filters: Filter restaurants by alphabetical order (A-Z), location, and category.
+- Pagination: Navigate through the data more conveniently with pagination feature.
+- Status Notifications: Receive notifications for successful or failed data operations (add, update, delete).
+- Prevent accidental data loss: Clicking the delete button will prompt an alert to reconfirm.
 
 ## How to Use
 1. Open your terminal and clone the repository:
