@@ -20,7 +20,7 @@ This website showcases a variety of restaurants, where you can view the entire l
    $ git clone https://github.com/maomao0007/restaurant_list.git
 2. Navigate to the project directory:
    ```shell
-   $ cd restaurant-list
+   $ cd restaurant.list
 3. Install the necessary dependencies:
    ```shell
    $ npm install
@@ -47,8 +47,11 @@ This website showcases a variety of restaurants, where you can view the entire l
 - Sequelize 6.37.3
 - Sequelize-CLI 6.6.2
 - MySQL 3.9.7
+- connect-flash 0.1.1
+- express-session 1.18.0
+- Dotenv 16.4.5
 
 ## Screenshots
-![screencapture-localhost-3000-Restaurant-List ( home page )](https://github.com/maomao0007/restaurant_list/assets/164178703/802ff583-3026-4945-93c2-1bdc645a6d6f)
+![screencapture-Restaurant-List  ( homepage )](https://github.com/maomao0007/restaurant_list/assets/164178703/15fa9d5c-5ce1-403f-b6f5-a56d9a5eb07b)
 ![screencapture-localhost-3000-Restaurant-List-new ( adding page ) ](https://github.com/maomao0007/restaurant_list/assets/164178703/40086186-6f0d-4f0a-a6b6-acc155de18d8)
 ![screencapture-localhost-3000-Restaurant-List-3-edit ( editing page )](https://github.com/maomao0007/restaurant_list/assets/164178703/81b344ce-e884-428d-aae0-26bab66be8e1)
