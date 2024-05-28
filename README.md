@@ -26,8 +26,7 @@ Before you start the application, you need to set up some environment variables.
 
 #### Set up Development Environment
 
-```bash
-export NODE_ENV=development
+$ export NODE_ENV=development
 
 ## How to Use
 
