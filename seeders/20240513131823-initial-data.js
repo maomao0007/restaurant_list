@@ -20,10 +20,10 @@ module.exports = {
       updatedAt: new Date(),
       }))
 
-    await queryInterface.bulkInsert('restaurants',restaurants,{})
+    await queryInterface.bulkInsert('Restaurants',restaurants,{})
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('restaurants', null, {});
+    await queryInterface.bulkDelete('Restaurants', null, {});
     } 
 };
