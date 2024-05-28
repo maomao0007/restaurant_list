@@ -17,8 +17,8 @@ Welcome to my restaurant directory! This website showcases a variety of restaura
 
 ## Environment Setup
 This project requires the following software to be installed:
-Node.js v18
-MySQL v8
+- Node.js v18
+- MySQL v8
 
 ## How to Use
 1. Open your terminal and clone the repository:
