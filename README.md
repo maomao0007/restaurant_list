@@ -20,7 +20,7 @@ This project requires the following software to be installed:
 - Node.js v18
 - MySQL v8
 
-### Setting Environment Variables
+## Setting Environment Variables
 
 Before you start the application, you need to set up some environment variables.
 
@@ -30,6 +30,7 @@ Before you start the application, you need to set up some environment variables.
 export NODE_ENV=development
 
 ## How to Use
+
 1. Open your terminal and clone the repository:
    ```shell
    $ git clone https://github.com/maomao0007/restaurant_list.git
