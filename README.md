@@ -21,12 +21,11 @@ This project requires the following software to be installed:
 - MySQL v8
 
 ## Setting Environment Variables
-
 Before you start the application, you need to set up some environment variables.
 
-#### Set up Development Environment
-
-$ export NODE_ENV=development
+- Set up Development Environment
+  ```shell
+  $ export NODE_ENV=development
 
 ## How to Use
 
