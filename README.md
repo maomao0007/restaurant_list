@@ -15,6 +15,11 @@ Welcome to my restaurant directory! This website showcases a variety of restaura
 - Status Notifications: Receive notifications for successful or failed data operations (add, update, delete).
 - Prevent accidental data loss: Clicking the delete button will prompt an alert to reconfirm.
 
+## Environment Setup
+This project requires the following software to be installed:
+Node.js v18
+MySQL v8
+
 ## How to Use
 1. Open your terminal and clone the repository:
    ```shell
@@ -45,8 +50,7 @@ Welcome to my restaurant directory! This website showcases a variety of restaura
 - Express-handlebars 7.1.2
 - Express-session 1.18.0
 - method-override 3.0.0
-- MySQL 3.9.7
-- Node.js 18.15.0
+- MySQL2 3.9.7
 - Nodemon 3.1.0
 - npm 9.5.0
 - Sequelize 6.37.3
