@@ -20,36 +20,53 @@ This project requires the following software to be installed:
 - Node.js v18
 - MySQL v8
 
-## Setting Environment Variables
-Before you start the application, you need to set up some environment variables.
-
-- Set up Development Environment
-  ```shell
-  $ export NODE_ENV=development
-
 ## How to Use
 
 1. Open your terminal and clone the repository:
    ```shell
-   $ git clone https://github.com/maomao0007/restaurant_list.git
+   git clone https://github.com/maomao0007/restaurant_list.git
+   
 2. Navigate to the project directory:
    ```shell
-   $ cd restaurant.list
+   cd restaurant.list
+   
 3. Install the necessary dependencies:
    ```shell
-   $ npm install
-4. Once the installation is complete, start the application:
-   ```shell
-   $ npm run dev
-5. If you see the following message, the server is running successfully:
-   ```shell
-   express server is running on http://localhost:3000
-6. Open your web browser and navigate to http://localhost:3000 to view the application.
-
-7. To stop the server, you can exit the terminal by typing:
-   ```shell
-   ctrl + c
+   npm install
    
+4. Set up the MySQL database to match the configuration in config/config.json.
+   
+5. Create database:
+   ```shell
+   Create database Restaurant;
+   
+6. Create a table:
+   ```shell
+   npx sequelize db:migrate
+   
+7. Set seed data:
+   ```shell
+   npx sequelize-cli db:seed:all
+   
+8. Setting Environment Variables ( If using MAC / Linux, kindly ignore this step. )
+- Set up Development Environment
+  ```shell
+  export NODE_ENV=development
+   
+9. Once the installation is complete, start the application:
+   ```shell
+   npm run dev
+   
+10. If you see the following message, the server is running successfully:
+
+- express server is running on http://localhost:3000
+
+- Open your web browser and navigate to http://localhost:3000 to view the application.
+
+11. To stop the server, you can exit the terminal by typing:
+    ```shell
+    ctrl + c
+
 ## Development Tools
 - Bootstrap 5.1.3
 - connect-flash 0.1.1
