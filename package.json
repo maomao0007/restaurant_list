@@ -18,13 +18,14 @@
     "express": "^4.19.2",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.18.0",
+    "handlebars-helpers": "^0.10.0",
     "method-override": "^3.0.0",
     "mysql2": "^3.9.7",
     "sequelize": "^6.37.3",
     "sequelize-cli": "^6.6.2"
   },
   "devDependencies": {
-    "standard": "^17.1.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "standard": "^17.1.0"
   }
 }
