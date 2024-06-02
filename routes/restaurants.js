@@ -137,9 +137,9 @@ router.get("/:id", (req, res) => {
     raw: true,
   }).then((restaurant) => res.render("detail", { restaurant }))
     .catch((error) => {
-			error.errorMessage = 'Failed to load'
-			next(error)
-		})
+		  error.errorMessage = 'Failed to load'
+		  next(error)
+	  })
 });
 
 // display the edit restaurant page
