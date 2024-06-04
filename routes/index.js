@@ -8,8 +8,10 @@ const LocalStrategy = require("passport-local");
 // 導入路由模組
 const restaurants = require("./restaurants");
 const users = require("./users");
+
+const authHandler = require("../middlewares/auth-handler");
 // 使用路由模組
-router.use("/Restaurant-List", restaurants);
+router.use("/Restaurant-List", authHandler, restaurants);
 router.use("/users", users);
 
 router.get("/", (req, res) => {
@@ -41,6 +43,10 @@ passport.serializeUser((user, done) => {
   return done(null, { id, name, email });
 });
 
+passport.deserializeUser((user, done) => {
+  done(null, { id: user.id });
+});
+
 router.get("/register", (req, res) => {
   return res.render("register");
 });
@@ -61,6 +67,16 @@ router.post(
     failureFlash: true,
   })
 );
+
+router.post("/logout", (req, res) => {
+  req.logout((error) => {
+    if (error) {
+      next(error);
+    }
+
+    return res.redirect("/login");
+  });
+});
 
 // 匯出路由器
 module.exports = router;
