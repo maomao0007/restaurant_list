@@ -1,0 +1,36 @@
+<h2>Register</h2>
+{{> message}}
+<form action="/users" method="POST">
+    <div>
+        <div>
+            <label for="name">Name</label>
+        </div>
+        <input type="text" name="name" placeholder="Enter name">
+    </div>
+    <div>
+        <div>
+            <label for="email">Email</label>
+        </div>
+        <input type="email" name="email" placeholder="Enter email" required>
+    </div>
+    <div>
+        <div>
+            <label for="password">Password</label>
+        </div>
+        <input type="password" name="password" placeholder="Enter password" required>
+    </div>
+    <div>
+        <div>
+            <label for="confirmPassword">Confirm password</label>
+        </div>
+        <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+    </div>
+    <button type="submit">Register</button>
+</form>
+<form action="/login/facebook" method='GET'>
+  <button type="submit">Facebook Login</button>
+</form>
+<div>
+    <span>Already have an account?</span>
+    <a href="/login">Login</a>
+</div>

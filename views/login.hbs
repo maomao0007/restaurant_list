@@ -1,0 +1,24 @@
+<h3>Login</h3>
+{{> message}}
+<form action="/login" method="POST">
+    <div>
+        <div>
+            <label for="email">Email</label>
+        </div>
+        <input type="email" name="email" placeholder="Enter email" required>
+    </div>
+    <div>
+        <div>
+            <label for="password">Password</label>
+        </div>
+        <input type="password" name="password" placeholder="Enter password" required>
+    </div>
+    <button type="submit">Login</button>
+</form>
+<form action="/login/facebook" method='GET'>
+  <button type="submit">Facebook Login</button>
+</form>
+<div>
+    <span>No account?</span>
+    <a href="/register">Register</a>
+</div>
