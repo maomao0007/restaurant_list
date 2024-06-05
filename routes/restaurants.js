@@ -10,6 +10,7 @@ router.get("/", (req, res, next) => {
   const keyword = req.query.search?.trim();
   const page = parseInt(req.query.page) || 1;
   const limit = 9; // 9 items per page
+  const userId = req.user.id;
 
   let sortAttribute = req.query.sortAttribute || "name_en";
   let sortMethod = req.query.sortMethod?.toLowerCase() || "asc";
@@ -44,6 +45,7 @@ router.get("/", (req, res, next) => {
       "description",
     ],
     order: orderOption, // 根據排序選項排序
+    where: { userId },
     offset: (page - 1) * limit, // the number of skipped items
     limit,
     raw: true,
@@ -95,6 +97,7 @@ router.post("/", (req, res, next) => {
     rating,
     description,
   } = req.body;
+  const userId = req.user.id;
 
   return Restaurant.create({
     name,
@@ -106,20 +109,22 @@ router.post("/", (req, res, next) => {
     google_map,
     rating,
     description,
+    userId,
   })
     .then(() => {
       req.flash("success", "Added successfully");
       res.redirect("/Restaurant-List");
     })
     .catch((error) => {
-      error.errorMessage = "Failed to add"
-      next(error)
-    })
+      error.errorMessage = "Failed to add";
+      next(error);
+    });
 });
 
 // display the details of the restaurant
 router.get("/:id", (req, res) => {
   const id = req.params.id;
+  const userId = req.user.id
 
   return Restaurant.findByPk(id, {
     attributes: [
@@ -133,9 +138,19 @@ router.get("/:id", (req, res) => {
       "google_map",
       "rating",
       "description",
+      'userId'
     ],
     raw: true,
-  }).then((restaurant) => res.render("detail", { restaurant }))
+  }).then((restaurant) => 
+      if (!restaurant) {  // 資料不存在的驗證
+				req.flash('error', 'Data not found') 
+				return res.redirect('/Restaurant-List')
+			}
+			if (restaurant.userId !== userId) {  // todo的建立者，是否與登入者相同
+				req.flash('error', 'Unauthorized access')
+				return res.redirect('/Restaurant-List')
+			}
+    res.render("detail", { restaurant }))
     .catch((error) => {
 		  error.errorMessage = 'Failed to load'
 		  next(error)
@@ -145,6 +160,8 @@ router.get("/:id", (req, res) => {
 // display the edit restaurant page
 router.get("/:id/edit", (req, res) => {
   const id = req.params.id;
+  const userId = req.user.id
+
   return Restaurant.findByPk(id, {
     attributes: [
       "id",
@@ -157,10 +174,21 @@ router.get("/:id/edit", (req, res) => {
       "google_map",
       "rating",
       "description",
+      'userId'
     ],
-    raw: true,
-  })
-    .then((restaurant) => res.render("edit", { restaurant }))
+    raw = true,
+	})
+		.then((restaurant) => {
+			if (!restaurant) {
+				req.flash('error', 'Data not found')
+				return res.redirect('/Restaurant-List')
+			}
+			if (restaurant.userId !== userId) { 
+				req.flash('error', 'Unauthorized access')
+				return res.redirect('/Restaurant-List')
+			}
+     res.render("edit", { restaurant })
+    })
     .catch((error) => {
       error.errorMessage = "Failed to load";
       next(error);
@@ -171,7 +199,34 @@ router.get("/:id/edit", (req, res) => {
 router.put("/:id", (req, res) => {
   const body = req.body;
   const id = req.params.id;
-  return Restaurant.update(body, { where: { id } })
+  const userId = req.user.id
+
+  return Restaurant.findByPk(id, {
+    attributes: [
+      "id",
+      "name",
+      "name_en",
+      "category",
+      "image",
+      "location",
+      "phone",
+      "google_map",
+      "rating",
+      "description",
+      'userId'
+    ],
+	})
+		.then((restaurant) => {
+			if (!restaurant) {
+				req.flash('error', 'Data not found')
+				return res.redirect('/Restaurant-List')
+			}
+			if (restaurant.userId !== userId) { 
+				req.flash('error', 'Unauthorized access')
+				return res.redirect('/Restaurant-List')
+			}
+
+  return restaurant.update(body)
     .then(() => {
       req.flash("success", "Edited successfully");
       res.redirect(`/Restaurant-List/${id}`);
@@ -181,11 +236,39 @@ router.put("/:id", (req, res) => {
       next(error);
     });
 });
+})
 
 // delete the restaurant
 router.delete("/:id", (req, res) => {
   const id = req.params.id;
-  return Restaurant.destroy({ where: { id } })
+  const userId = req.user.id
+
+  return Restaurant.findByPk(id, {
+    attributes: [
+      "id",
+      "name",
+      "name_en",
+      "category",
+      "image",
+      "location",
+      "phone",
+      "google_map",
+      "rating",
+      "description",
+      'userId'
+    ],
+	})
+		.then((restaurant) => {
+			if (!restaurant) {
+				req.flash('error', 'Data not found')
+				return res.redirect('/Restaurant-List')
+			}
+			if (restaurant.userId !== userId) { 
+				req.flash('error', 'Unauthorized access')
+				return res.redirect('/Restaurant-List')
+			}
+
+  return restaurant.destroy()
     .then(() => {
       req.flash("success", "Deleted successfully");
       res.redirect("/Restaurant-List");
@@ -195,5 +278,6 @@ router.delete("/:id", (req, res) => {
       next(error);
     });
 });
+})
 
 module.exports = router;
