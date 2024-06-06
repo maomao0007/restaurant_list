@@ -1,3 +1,4 @@
+{{> navbar}}
 {{>message}}
 
 <!-- search bar -->
@@ -43,7 +44,6 @@
     </div>
   </div>
 </div>
-<a href="/users/register">Register</a>
 <!-- restaurant list -->
 <div style="text-align: center; margin-top: 20px;">
   <a
@@ -111,14 +111,14 @@
 <div class="d-flex justify-content-center align-items-center my-4">
   <form action="/Restaurant-List" method="GET" style="display: inline;" class="me-2">
     <input type="hidden" name="page" value="{{prev}}">
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-outline-info">
       <i class="fas fa-chevron-left"></i> Prev
     </button>
   </form>
   <span class="mx-3">Page {{page}}</span>
   <form action="/Restaurant-List" method="GET" style="display: inline;" class="ms-2">
     <input type="hidden" name="page" value="{{next}}">
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-outline-info">
       Next <i class="fas fa-chevron-right"></i>
     </button>
   </form>

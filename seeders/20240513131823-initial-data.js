@@ -79,20 +79,6 @@ module.exports = {
       //   { transaction }
       // );
 
-      // const restaurants = json.results.map((restaurant) => ({
-      //   name: restaurant.name,
-      //   name_en: restaurant.name_en,
-      //   category: restaurant.category,
-      //   image: restaurant.image,
-      //   location: restaurant.location,
-      //   phone: restaurant.phone,
-      //   google_map: restaurant.google_map,
-      //   rating: restaurant.rating,
-      //   description: restaurant.description,
-      //   createdAt: new Date(),
-      //   updatedAt: new Date(),
-      // }));
-
       await transaction.commit();
     } catch (error) {
       if (transaction) await transaction.rollback()
@@ -100,7 +86,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Restaurants', null);
-    await queryInterface.bulkDelete('Users', null);
+    await queryInterface.bulkDelete('Restaurants', null, {});
+    await queryInterface.bulkDelete('Users', null, {});
     } 
 };
