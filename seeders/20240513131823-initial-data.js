@@ -1,8 +1,5 @@
 'use strict';
-// 讀取文件系統中的文件
-const fs = require("fs");
-// 處理和轉換文件路徑
-const path = require("path");
+const restaurantData = require("../public/jsons/restaurant.json").results;
 const bcrypt = require("bcryptjs")
 
 /** @type {import('sequelize-cli').Migration} */
@@ -13,14 +10,6 @@ module.exports = {
     try {
       transaction = await queryInterface.sequelize.transaction();
 
-      // 讀取餐廳資料
-      const restaurantFilePath = path.join(
-        __dirname,
-        "../public/jsons/restaurant.json"
-      );
-      const restaurantData = JSON.parse(
-        fs.readFileSync(restaurantFilePath, "utf8")
-      );
       const hash = await bcrypt.hash("12345678", 10);
 
       await queryInterface.bulkInsert(
@@ -45,39 +34,18 @@ module.exports = {
         ],
         { transaction }
       );
-      // 將前 4 家餐廳分配給第一位使用者
-      const restaurantsForUser1 = restaurantData.slice(0, 4).map((restaurant) => ({
-          ...restaurant,
-          userId: 1,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }));
-
-      // 將第 5 到第 8 家餐廳分配給第二位使用者
-      const restaurantsForUser2 = restaurantData.slice(4, 8).map((restaurant) => ({
-          ...restaurant,
-          userId: 2,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }));
-
-      // 插入餐廳資料
+     
       await queryInterface.bulkInsert("Restaurants",
-        [...restaurantsForUser1, ...restaurantsForUser2],
+        restaurantData.map((restaurant, i) => {
+          if ( 0 <= i && i <= 4 ) {
+          return {...restaurant, userID: 1, createdAt: new Date(), updatedAt: new Date()}
+        }
+          if ( 5 <= i && i <= 8 ) {
+          return {...restaurant, userID: 2, createdAt: new Date(), updatedAt: new Date()}
+        }
+      }),
         { transaction }
       );
-
-      // // 或寫成以下這個
-      // await queryInterface.bulkInsert(
-      //   "Restaurants",
-      //   restaurantData.map((restaurant, index) => ({
-      //     ...restaurant,
-      //     userId: index < 4 ? 1 : 2,
-      //     createdAt: new Date(),
-      //     updatedAt: new Date(),
-      //   })),
-      //   { transaction }
-      // );
 
       await transaction.commit();
     } catch (error) {
@@ -88,5 +56,5 @@ module.exports = {
   async down(queryInterface, Sequelize) {
     await queryInterface.bulkDelete('Restaurants', null, {});
     await queryInterface.bulkDelete('Users', null, {});
-    } 
-};
+  }
+}
