@@ -1,10 +1,12 @@
 # Restaurant List
 
 ## Introduction
-Welcome to my restaurant directory! This website showcases a variety of restaurants, where you can view the entire list and details of each establishment. Additionally, users can add, update, and delete restaurants to provide more detailed information. Furthermore, the platform offers a search and dropdown box filter functionality, enabling users to find restaurants based on keywords. Moreover, the website includes pagination to navigate through the data more conveniently.
+
+Welcome to my restaurant directory! Register or log in, including via Facebook, to create personalized restaurant forms with detailed information. Explore a variety of restaurants, view details, and manage establishments by adding, updating, or deleting entries. Utilize search and dropdown filters for easy navigation and enjoy seamless browsing with pagination.
 
 ## Features
 
+- After registering or logging in, users can also sign in through third-party authentication via Facebook to create their own restaurant lists.
 - Restaurant List: Browse through a comprehensive list of restaurants.
 - Restaurant Details: View detailed information about each restaurant.
 - Add, Update, Delete: Users can add new restaurants, update existing ones, and delete items.
