@@ -1,6 +1,7 @@
 // 引用 Express 與 Express 路由器
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcryptjs")
 
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -26,10 +27,17 @@ passport.use(
       raw: true,
     })
       .then((user) => {
-        if (!user || user.password !== password) {
-          return done(null, false, { message: "email 或密碼錯誤" });
+        if (!user) {
+          return done(null, false, { message: "Incorrect email or password." });
         }
-        return done(null, user);
+
+        return bcrypt.compare(password, user.password)
+        .then((isMatch) => {
+          if (!isMatch) {
+            return done(null, false, { message: "Incorrect email or password."});
+          }
+          return done(null, user);
+        })
       })
       .catch((error) => {
         error.errorMessage = "登入失敗";

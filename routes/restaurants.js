@@ -141,16 +141,17 @@ router.get("/:id", (req, res) => {
       'userId'
     ],
     raw: true,
-  }).then((restaurant) => 
-      if (!restaurant) {  // 資料不存在的驗證
+  }).then((restaurant) => {
+      if (!restaurant) {  
 				req.flash('error', 'Data not found') 
 				return res.redirect('/Restaurant-List')
 			}
-			if (restaurant.userId !== userId) {  // todo的建立者，是否與登入者相同
+			if (restaurant.userId !== userId) { 
 				req.flash('error', 'Unauthorized access')
 				return res.redirect('/Restaurant-List')
 			}
-    res.render("detail", { restaurant }))
+    res.render("detail", { restaurant })
+    })
     .catch((error) => {
 		  error.errorMessage = 'Failed to load'
 		  next(error)
@@ -176,7 +177,7 @@ router.get("/:id/edit", (req, res) => {
       "description",
       'userId'
     ],
-    raw = true,
+    raw: true,
 	})
 		.then((restaurant) => {
 			if (!restaurant) {
