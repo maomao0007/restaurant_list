@@ -11,8 +11,6 @@ const router = require("./routes");
 const messageHandler = require("./middlewares/message-handler");
 const errorHandler = require("./middlewares/error-handler");
 
-const passport = require("passport")
-
 // 引用 handlebars-helpers
 const helpers = require("handlebars-helpers")();
 
@@ -29,6 +27,8 @@ app.set("view engine", "handlebars");
 if (process.env.NODE_ENV === "development") {
   require("dotenv").config();
 }
+
+const passport = require("./config/passport");
 
 app.use(
   session({
