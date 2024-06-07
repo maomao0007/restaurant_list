@@ -45,7 +45,7 @@ router.get(
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/index",
+    successRedirect: "/Restaurant-List",
     failureRedirect: "/login",
     failureFlash: true,
   })
