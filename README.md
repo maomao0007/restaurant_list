@@ -69,6 +69,20 @@ This project requires the following software to be installed:
     ```shell
     ctrl + c
 
+- If you'd like to use Facebook to log in, please configure FACEBOOK_CLIENT_ID, and FACEBOOK_CLIENT_SECRET.
+
+  If you don't have a Facebook Client Id/Secret, please obtain one as Facebook login won't work without it.
+
+- Here are two sets of username and password for use:
+
+  1. Username: user1@example.com
+
+     Password: 12345678
+
+  2. Username: user2@example.com
+
+     Password: 12345678
+
 ## Development Tools
 - Bootstrap 5.1.3
 - connect-flash 0.1.1
