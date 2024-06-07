@@ -1,10 +1,12 @@
 # Restaurant List
 
 ## Introduction
-Welcome to my restaurant directory! This website showcases a variety of restaurants, where you can view the entire list and details of each establishment. Additionally, users can add, update, and delete restaurants to provide more detailed information. Furthermore, the platform offers a search and dropdown box filter functionality, enabling users to find restaurants based on keywords. Moreover, the website includes pagination to navigate through the data more conveniently.
+
+Welcome to my restaurant directory! Register or log in, including via Facebook, to create personalized restaurant forms with detailed information. Explore a variety of restaurants, view details, and manage establishments by adding, updating, or deleting entries. Utilize search and dropdown filters for easy navigation and enjoy seamless browsing with pagination.
 
 ## Features
 
+- After registering or logging in, users can also sign in through third-party authentication via Facebook to create their own restaurant lists.
 - Restaurant List: Browse through a comprehensive list of restaurants.
 - Restaurant Details: View detailed information about each restaurant.
 - Add, Update, Delete: Users can add new restaurants, update existing ones, and delete items.
@@ -67,6 +69,20 @@ This project requires the following software to be installed:
     ```shell
     ctrl + c
 
+- If you'd like to use Facebook to log in, please configure FACEBOOK_CLIENT_ID, and FACEBOOK_CLIENT_SECRET.
+
+  If you don't have a Facebook Client Id/Secret, please obtain one as Facebook login won't work without it.
+
+- Here are two sets of username and password for use:
+
+  1. Username: user1@example.com
+
+     Password: 12345678
+
+  2. Username: user2@example.com
+
+     Password: 12345678
+
 ## Development Tools
 - Bootstrap 5.1.3
 - connect-flash 0.1.1
@@ -82,6 +98,7 @@ This project requires the following software to be installed:
 - Sequelize-CLI 6.6.2
 
 ## Screenshots
-![screencapture-Restaurant-List  ( homepage )](https://github.com/maomao0007/restaurant_list/assets/164178703/15fa9d5c-5ce1-403f-b6f5-a56d9a5eb07b)
+![screencapture-localhost-3000 ( login page)](https://github.com/maomao0007/restaurant_list/assets/164178703/776baeb2-f86e-4752-ad45-3c5aa4aa924f)
+![screencapture-localhost-3000-Restaurant-List](https://github.com/maomao0007/restaurant_list/assets/164178703/78f8862b-d0d1-4420-a461-5af3b119cd25)
 ![screencapture-localhost-3000-Restaurant-List-new ( adding page ) ](https://github.com/maomao0007/restaurant_list/assets/164178703/40086186-6f0d-4f0a-a6b6-acc155de18d8)
 ![screencapture-localhost-3000-Restaurant-List-3-edit ( editing page )](https://github.com/maomao0007/restaurant_list/assets/164178703/81b344ce-e884-428d-aae0-26bab66be8e1)
