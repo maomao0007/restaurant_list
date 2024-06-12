@@ -47,7 +47,7 @@ passport.use(
       const name = profile.displayName;
 
       return User.findOne({
-        attributes: ["id", "name", "email", "password"],
+        attributes: ["id", "name", "email"],
         where: { email },
         raw: true,
       })

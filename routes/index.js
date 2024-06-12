@@ -51,10 +51,10 @@ router.post(
   })
 );
 
-router.post("/logout", (req, res) => {
+router.post("/logout", (req, res, next) => {
   req.logout((error) => {
     if (error) {
-      next(error);
+     return next(error);
     }
 
     return res.redirect("/login");
