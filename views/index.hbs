@@ -33,12 +33,12 @@
       <form action="/Restaurant-List" method="GET" id="sortForm">
         <select class="form-select" name="sortAttribute" id="sortAttribute" aria-label="orderOption">
           <!-- 預設選項 -->
-          <option value="name_en_asc">Name (A -> Z)</option>
-          <option value="name_en_desc">Name (Z -> A)</option>
-          <option value="category_asc">Category (A -> Z)</option>
-          <option value="category_desc">Category (Z -> A)</option>
-          <option value="location_asc">Location (A -> Z)</option>
-          <option value="location_desc">Location (Z -> A)</option>
+          <option value="name_en_asc" {{#if (eq sortAttribute "name_en_asc")}}selected{{/if}}>Name (A -> Z)</option>
+          <option value="name_en_desc" {{#if (eq sortAttribute "name_en_desc")}}selected{{/if}}>Name (Z -> A)</option>
+          <option value="category_asc" {{#if (eq sortAttribute "category_asc")}}selected{{/if}}>Category (A -> Z)</option>
+          <option value="category_desc" {{#if (eq sortAttribute "category_desc")}}selected{{/if}}>Category (Z -> A)</option>
+          <option value="location_asc" {{#if (eq sortAttribute "location_asc")}}selected{{/if}}>Location (A -> Z)</option>
+          <option value="location_desc" {{#if (eq sortAttribute "location_desc")}}selected{{/if}}>Location (Z -> A)</option>
          </select>
       </form>
     </div>
