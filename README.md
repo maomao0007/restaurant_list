@@ -98,7 +98,7 @@ This project requires the following software to be installed:
 - Sequelize-CLI 6.6.2
 
 ## Screenshots
-![screencapture-localhost-3000 ( login page)](https://github.com/maomao0007/restaurant_list/assets/164178703/776baeb2-f86e-4752-ad45-3c5aa4aa924f)
-![screencapture-localhost-3000-Restaurant-List](https://github.com/maomao0007/restaurant_list/assets/164178703/78f8862b-d0d1-4420-a461-5af3b119cd25)
+![screencapture-localhost-3000 ( login page )](https://github.com/maomao0007/restaurant_list/assets/164178703/17c02cae-22bf-4ea4-9636-81e7f92300ea)
+![screencapture-Restaurant_List  ( homepage )](https://github.com/maomao0007/restaurant_list/assets/164178703/2ea93ce3-2808-4e62-9ea3-843f7494d2f7)
 ![screencapture-localhost-3000-Restaurant-List-new ( adding page ) ](https://github.com/maomao0007/restaurant_list/assets/164178703/40086186-6f0d-4f0a-a6b6-acc155de18d8)
 ![screencapture-localhost-3000-Restaurant-List-3-edit ( editing page )](https://github.com/maomao0007/restaurant_list/assets/164178703/81b344ce-e884-428d-aae0-26bab66be8e1)
