@@ -84,18 +84,23 @@ This project requires the following software to be installed:
      Password: 12345678
 
 ## Development Tools
-- Bootstrap 5.1.3
+- bcryptjs 2.4.3
+- bootstrap 5.1.3
 - connect-flash 0.1.1
-- Dotenv 16.4.5
-- Express 4.19.2
-- Express-handlebars 7.1.2
-- Express-session 1.18.0
+- dotenv 16.4.5
+- express 4.19.2
+- express-handlebars 7.1.2
+- express-session 1.18.0
+- handlebars-helpers 0.10.0
 - method-override 3.0.0
-- MySQL2 3.9.7
-- Nodemon 3.1.0
+- mysql2 3.9.7
+- nodemon 3.1.0
 - npm 9.5.0
-- Sequelize 6.37.3
-- Sequelize-CLI 6.6.2
+- passport 0.7.0
+- passport-facebook 3.0.0 
+- passport-local 1.0.0
+- sequelize 6.37.3
+- sequelize-cli 6.6.2
 
 ## Screenshots
 ![screencapture-localhost-3000 ( login page )](https://github.com/maomao0007/restaurant_list/assets/164178703/17c02cae-22bf-4ea4-9636-81e7f92300ea)
