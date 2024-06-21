@@ -84,21 +84,26 @@ This project requires the following software to be installed:
      Password: 12345678
 
 ## Development Tools
-- Bootstrap 5.1.3
+- bcryptjs 2.4.3
+- bootstrap 5.1.3
 - connect-flash 0.1.1
-- Dotenv 16.4.5
-- Express 4.19.2
-- Express-handlebars 7.1.2
-- Express-session 1.18.0
+- dotenv 16.4.5
+- express 4.19.2
+- express-handlebars 7.1.2
+- express-session 1.18.0
+- handlebars-helpers 0.10.0
 - method-override 3.0.0
-- MySQL2 3.9.7
-- Nodemon 3.1.0
+- mysql2 3.9.7
+- nodemon 3.1.0
 - npm 9.5.0
-- Sequelize 6.37.3
-- Sequelize-CLI 6.6.2
+- passport 0.7.0
+- passport-facebook 3.0.0 
+- passport-local 1.0.0
+- sequelize 6.37.3
+- sequelize-cli 6.6.2
 
 ## Screenshots
-![screencapture-localhost-3000 ( login page)](https://github.com/maomao0007/restaurant_list/assets/164178703/776baeb2-f86e-4752-ad45-3c5aa4aa924f)
-![screencapture-localhost-3000-Restaurant-List](https://github.com/maomao0007/restaurant_list/assets/164178703/78f8862b-d0d1-4420-a461-5af3b119cd25)
+![screencapture-localhost-3000 ( login page )](https://github.com/maomao0007/restaurant_list/assets/164178703/17c02cae-22bf-4ea4-9636-81e7f92300ea)
+![screencapture-Restaurant_List  ( homepage )](https://github.com/maomao0007/restaurant_list/assets/164178703/2ea93ce3-2808-4e62-9ea3-843f7494d2f7)
 ![screencapture-localhost-3000-Restaurant-List-new ( adding page ) ](https://github.com/maomao0007/restaurant_list/assets/164178703/40086186-6f0d-4f0a-a6b6-acc155de18d8)
 ![screencapture-localhost-3000-Restaurant-List-3-edit ( editing page )](https://github.com/maomao0007/restaurant_list/assets/164178703/81b344ce-e884-428d-aae0-26bab66be8e1)
