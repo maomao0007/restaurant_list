@@ -101,7 +101,7 @@
           <input
             id="phone"
             type="text"
-            class="form-control" required pattern="[0-9\s]{11,12}" placeholder="Please enter the number of the restaurant (01 2345 6789)" 
+            class="form-control" required pattern="[0-9\s]{11,12}"
             placeholder="Please enter the phone number of the restaurant"
             name="phone"
             value="{{restaurant.phone}}"
@@ -188,5 +188,24 @@ saveBtn.addEventListener('click', function() {
     return;  // 阻止後續操作
   }
 });
+
+// 設定電話號碼自動空格格式
+const input = document.querySelector("#phone");
+
+input.addEventListener("input", updateValue);
+
+function updateValue(e) {
+  let value = e.target.value.replace(/\D/g, ''); // 移除所有非數字字符
+  if (value.length > 2) {
+  value = value.slice(0, 2) + ' ' + value.slice(2);
+  }
+  if (value.length > 7) {
+  value = value.slice(0, 7) + ' ' + value.slice(7);
+  }
+  if (value.length > 12) { // 確保總長度不超過 12 個字符（包含空格）
+  value = value.slice(0, 12);
+  }
+  e.target.value = value; // 將處理後的值 value 更新到輸入框中，顯示給使用者看
+  }
 
 </script>
