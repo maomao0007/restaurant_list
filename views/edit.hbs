@@ -100,7 +100,7 @@
           </label>
           <input
             id="phone"
-            type="text"
+            type="tel"
             class="form-control" required pattern="[0-9\s]{11,12}"
             placeholder="Please enter the phone number of the restaurant"
             name="phone"
@@ -169,8 +169,8 @@ const googleMapInput = document.querySelector('#googleMap');
 
 // 監聽器綁在 save btn， 當 user click save btn ，系統會檢查格式內容是否符合以下規定
 saveBtn.addEventListener('click', function() {
-  // 檢查 locationInput 的值是否包含 "市" 和 "區"
-  if (!locationInput.value.includes('市') || !locationInput.value.includes('區')) {
+  // 檢查 locationInput 的值是否包含 "市" 和 "號"
+  if (!locationInput.value.includes('市') || !locationInput.value.includes('號')) {
     alert('Please enter the correct address format');
     event.preventDefault(); // 阻止表單提交
     return;  // 阻止後續檢查
